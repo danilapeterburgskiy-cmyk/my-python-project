@@ -3,3 +3,11 @@ __pycache__/
 *.pyc
 .vscode/
 *.log
+env/
+.env
+*.env
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.code-workspace
