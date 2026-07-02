@@ -23,6 +23,16 @@ def get_categories(db: Session, skip: int = 0, limit: int = 100):
     """Получение всех категорий"""
     return db.query(models.Category).offset(skip).limit(limit).all()
 
+def update_category(db: Session, category_id: int, title: str):
+    """Обновление категории"""
+    db_category = get_category(db, category_id)
+    if db_category:
+        db_category.title = title
+        db.commit()
+        db.refresh(db_category)
+        return db_category
+    return None
+
 def delete_category(db: Session, category_id: int):
     """Удаление категории"""
     db_category = get_category(db, category_id)
